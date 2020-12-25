@@ -3,7 +3,7 @@
 	"displayName": "My Live Server",
 	"description": "Launch a development local Server with live reload feature for static & dynamic pages",
 	"version": "5.6.2",
-	"publisher": "ritwickdey",
+	"publisher": "mo doaie",
 	"author": {
 		"name": "Ritwick Dey",
 		"email": "ritwickdey@outlook.com",
@@ -336,7 +336,7 @@
 	"license": "MIT",
 	"icon": "images/icon.png",
 	"bugs": {
-		"url": "https://github.com/ritwickdey/vscode-live-server/issues",
+		"url": "https://github.com/ccpu/vscode-live-server/issues",
 		"email": "ritwickdey@outlook.com"
 	},
 	"repository": {
@@ -380,10 +380,5 @@
 	"announcement": {
 		"onVersion": "5.6.1",
 		"message": "[NEW] LiveServer@5.6: BrowserPreview integration, auto fallback to random port & fixes."
-	},
-	"__metadata": {
-		"id": "b63c44fd-0457-4696-99e9-dbfdf70d77de",
-		"publisherDisplayName": "Ritwick Dey",
-		"publisherId": "17fd9a78-e430-4a78-add2-ade4a8830352"
 	}
 }
