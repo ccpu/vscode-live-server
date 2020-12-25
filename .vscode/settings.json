@@ -8,5 +8,4 @@
     },
     "liveServer.settings.root": "/_site",
     "liveServer.settings.port": 5502,
-    "prettier.requireConfig": true
 }

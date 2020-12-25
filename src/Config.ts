@@ -24,11 +24,7 @@ export class Config {
     return Config.configuration.get(val) as T;
   }
 
-  private static setSettings(
-    key: string,
-    val: number,
-    isGlobal: boolean = false
-  ): Thenable<void> {
+  private static setSettings(key: string, val: number, isGlobal: boolean = false): Thenable<void> {
     return Config.configuration.update(key, val, isGlobal);
   }
 
@@ -132,11 +128,12 @@ export class Config {
     return Config.configuration.update('multiRootWorkspaceName', val, false);
   }
 
+  public static get browserFlags(): string[] {
+    return Config.getSettings<string[]>('browserFlags') || [];
+  }
+
   public static getFileList(): QuickPickItem[] {
-    const prompts =
-      Config.getSettings<{ label: string; relativePath: string }[]>(
-        'fileList'
-      ) || [];
+    const prompts = Config.getSettings<{ label: string; relativePath: string }[]>('fileList') || [];
 
     return prompts.map((x) => ({
       label: x.label,

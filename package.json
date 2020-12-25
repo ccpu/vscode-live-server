@@ -329,6 +329,11 @@
 						}
 					},
 					"description": "Will prompt user to select a file to launch from menu."
+				},
+				"liveServer.settings.browserFlags": {
+					"type": "array",
+					"default": [],
+					"description": "Will add specified flags when running browser. e.g --user-data-dir=chrome-debug"
 				}
 			}
 		}

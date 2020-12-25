@@ -297,6 +297,10 @@ export class AppModel implements IAppModel {
         let browserName = browserDetails[0];
         params.push(browserName);
 
+        if (Config.browserFlags) {
+          params = [...params, ...Config.browserFlags];
+        }
+
         if (browserDetails[1] && browserDetails[1] === 'PrivateMode') {
           if (browserName === 'chrome' || browserName === 'blisk')
             params.push('--incognito');
