@@ -7,5 +7,6 @@
         "out": true // set this to false to include "out" folder in search results
     },
     "liveServer.settings.root": "/_site",
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502,
+    "prettier.requireConfig": true
 }
