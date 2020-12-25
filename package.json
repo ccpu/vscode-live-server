@@ -300,6 +300,35 @@
           "type": "string",
           "default": null,
           "description": "This the entry point of server when you're in multiroot workspace"
+        },
+        "liveServer.settings.fileList": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "array"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "relativePath": {
+                  "type": "string"
+                }
+              }
+            },
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "relativePath": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Will prompt user to select a file to launch from menu."
         }
       }
     }
