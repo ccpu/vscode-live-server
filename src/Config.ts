@@ -16,7 +16,7 @@ export interface IHttps {
 }
 
 export interface Transform {
-  form: string;
+  replace: string;
   to: string;
 }
 

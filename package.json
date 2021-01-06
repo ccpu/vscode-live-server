@@ -344,7 +344,7 @@
 								"items": {
 									"type": "object",
 									"properties": {
-										"from": {
+										"replace": {
 											"type": "string"
 										},
 										"to": {
