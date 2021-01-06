@@ -29,7 +29,6 @@ export class AppModel implements IAppModel {
 
   private readonly goLiveEvent = new EventEmitter<GoLiveEvent>();
   private readonly goOfflineEvent = new EventEmitter<GoOfflineEvent>();
-  private readonly liveShareHelper: LiveShareHelper;
 
   public runningPort: number;
 
@@ -45,8 +44,6 @@ export class AppModel implements IAppModel {
     this.localIps = _ips.local ? _ips.local : Config.getHost;
     this.IsServerRunning = false;
     this.runningPort = null;
-
-    this.liveShareHelper = new LiveShareHelper(this);
 
     this.haveAnySupportedFile().then(() => {
       StatusbarUi.Init();
@@ -83,7 +80,7 @@ export class AppModel implements IAppModel {
     let subPath = Helper.getSubPath(pathInfos.rootPath, openedDocUri);
 
     if (!subPath) {
-      subPath = await getQuickPromptPick(Config.getFileList());
+      subPath = await getQuickPromptPick(Config.getFileListPrompts());
     }
 
     if (this.IsServerRunning) {
@@ -110,6 +107,15 @@ export class AppModel implements IAppModel {
         this.tagMissedCallback();
       }
     );
+
+    if (Config.getTransform.length) {
+      const transformInfo = Config.getTransform.find((x) =>
+        subPath.match(x.regex)
+      );
+      if (transformInfo) {
+        params.transform = transformInfo.transform;
+      }
+    }
 
     LiveServerHelper.StartServer(params, async (serverInstance) => {
       if (serverInstance && serverInstance.address) {

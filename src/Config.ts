@@ -15,6 +15,21 @@ export interface IHttps {
   passphrase: string;
 }
 
+export interface Transform {
+  form: string;
+  to: string;
+}
+
+export interface TransformInfo {
+  regex: string;
+  transform: Transform[];
+}
+
+export interface FileList {
+  label: string;
+  relativePath: string;
+}
+
 export class Config {
   public static get configuration() {
     return workspace.getConfiguration('liveServer.settings');
@@ -24,7 +39,11 @@ export class Config {
     return Config.configuration.get(val) as T;
   }
 
-  private static setSettings(key: string, val: number, isGlobal: boolean = false): Thenable<void> {
+  private static setSettings(
+    key: string,
+    val: number,
+    isGlobal: boolean = false
+  ): Thenable<void> {
     return Config.configuration.update(key, val, isGlobal);
   }
 
@@ -132,8 +151,18 @@ export class Config {
     return Config.getSettings<string[]>('browserFlags') || [];
   }
 
-  public static getFileList(): QuickPickItem[] {
-    const prompts = Config.getSettings<{ label: string; relativePath: string }[]>('fileList') || [];
+  public static get getTransform(): TransformInfo[] {
+    const list = Config.getSettings<TransformInfo[]>('transform') || [];
+    return list;
+  }
+
+  public static get getFileList(): FileList[] {
+    const list = Config.getSettings<FileList[]>('fileList') || [];
+    return list;
+  }
+
+  public static getFileListPrompts(): QuickPickItem[] {
+    const prompts = this.getFileList;
 
     return prompts.map((x) => ({
       label: x.label,

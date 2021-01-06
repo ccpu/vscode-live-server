@@ -1,4 +1,5 @@
 'use strict';
+// @ts-ignore
 import * as liveServer from 'live-server';
 // @ts-ignore
 import * as httpShutdown from 'http-shutdown';
@@ -7,7 +8,7 @@ export class LiveServerHelper {
   static StartServer(params, callback) {
     setTimeout(() => {
       try {
-        let ServerInstance = liveServer.start(params);
+        let ServerInstance = liveServer.start(params, undefined);
         setTimeout(() => {
           if (!ServerInstance._connectionKey) {
             return callback({});
